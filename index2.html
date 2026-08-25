@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thiago Nakaba — Portfólio</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23ffffff'/><text x='4' y='22' font-family='Georgia,serif' font-weight='700' font-size='15' fill='%231a1a18'>TN</text><circle cx='28' cy='22' r='3' fill='%232563eb'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f9f9f7;
+      --surface: #ffffff;
+      --border: #e8e8e4;
+      --text: #1a1a18;
+      --muted: #6b6b66;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --accent-mid: #bfdbfe;
+      --tag-bg: #f1f5f9;
+      --tag-text: #475569;
+      --radius: 10px;
+      --font-display: 'Sora', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(249,249,247,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 56px;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: color 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* LAYOUT */
+    .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+    section { padding: 80px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* HERO */
+    #hero {
+      padding-top: 140px;
+      padding-bottom: 80px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid var(--accent-mid);
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-desc {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.18s;
+      border: 1.5px solid transparent;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover { background: #1d4ed8; border-color: #1d4ed8; }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-outline:hover { border-color: #c0c0bc; background: var(--surface); }
+
+    /* SECTION HEADERS */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.6px;
+      margin-bottom: 36px;
+      color: var(--text);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+    .about-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .about-card-value {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .about-text {
+      font-size: 15.5px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    /* PROJECTS */
+    .projects-grid { display: flex; flex-direction: column; gap: 16px; }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .project-card:hover {
+      border-color: #c0c0bc;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    }
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.2px;
+    }
+    .project-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .badge-active { background: #dcfce7; color: #166534; }
+    .badge-done   { background: #f1f5f9; color: #475569; }
+    .project-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+    .skill-group-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 7px; }
+    .skill-pill {
+      font-size: 13px;
+      font-weight: 500;
+      background: var(--bg);
+      color: var(--text);
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    /* TIMELINE (experiências + orgs) */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0 28px;
+      position: relative;
+      padding-bottom: 32px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-date {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-weight: 500;
+      padding-top: 3px;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .timeline-body {
+      border-left: 2px solid var(--border);
+      padding-left: 24px;
+      position: relative;
+    }
+    .timeline-body::before {
+      content: '';
+      position: absolute;
+      left: -5px; top: 6px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+    .timeline-item:last-child .timeline-body { border-left-color: transparent; }
+    .timeline-org {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+    .timeline-role {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .timeline-bullets li {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.55;
+      padding-left: 14px;
+      position: relative;
+    }
+    .timeline-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+      font-size: 12px;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 16px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.18s;
+      gap: 8px;
+    }
+    .contact-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+    .contact-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-label { font-size: 12px; color: var(--muted); font-weight: 500; }
+    .contact-value { font-size: 13px; font-weight: 600; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      .nav-links a { font-size: 12px; }
+      h1 { font-size: 34px; letter-spacing: -1px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+      .timeline-date { text-align: left; }
+      .timeline-body { padding-left: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">TN<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
+    <li><a href="#experiencias">Experiências</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Disponível para estágios</div>
+    <h1>Thiago<br><em>Nakaba</em></h1>
+    <p class="hero-desc">
+      Estudante de Análise e Desenvolvimento de Sistemas na Unicamp. Construo soluções que combinam desenvolvimento de software, liderança técnica e impacto real.
+    </p>
+    <div class="hero-cta">
+      <a href="https://github.com/THIAGONAKABA" target="_blank" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/thiagonakaba/" target="_blank" class="btn btn-outline">LinkedIn</a>
+      <a href="mailto:tnkb.oficial@gmail.com" class="btn btn-outline">Contato</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="container">
+    <div class="section-label">Sobre mim</div>
+    <h2>Quem sou</h2>
+    <p class="about-text">
+      Sou estudante de ADS na FT/Unicamp e monitor do Semeia Code — projeto de extensão universitária onde ensinamos Python, lógica e algoritmos para cerca de 30 alunos do ensino médio de escolas públicas. O maior desafio: tornar conteúdo técnico acessível para quem tem pouco contato com inglês e pouca base prévia em programação. Isso me ensinou a comunicar ideias complexas de forma simples, adaptar abordagens na hora e entender de verdade onde o aluno trava — não só o que ele errou.
+    </p>
+    <p class="about-text" style="margin-top: -12px;">
+      Além do ensino, corrijo códigos com feedback individualizado, elaboro e testo exercícios junto com os professores (também alunos da Unicamp) e atuo no suporte presencial em sala. Fora do Semeia Code, lidero tecnicamente o desenvolvimento de um robô esterilizador UV autônomo e dirijo o Marketing do CDI Unicamp.
+    </p>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-label">Formação</div>
+        <div class="about-card-value">ADS — FT/Unicamp (2028)</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Semeia Code</div>
+        <div class="about-card-value">~30 alunos · Python · Extensão universitária</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Idiomas</div>
+        <div class="about-card-value">Português · Inglês · Japonês</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Localização</div>
+        <div class="about-card-value">Limeira, São Paulo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS -->
+<section id="projetos">
+  <div class="container">
+    <div class="section-label">Projetos</div>
+    <h2>O que construo</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-title">Robô Autônomo Esterilizador UV</span>
+          <span class="project-badge badge-active">Em andamento</span>
+        </div>
+        <p class="project-desc">
+          Desenvolvimento de firmware em C++ para navegação omnidirecional com integração a microcontroladores e sensores UV. Liderança técnica de 3 desenvolvedores, com apresentação dos resultados no evento VIII PAPE-G e UPA na Unicamp.
+        </p>
+        <div class="tags">
+          <span class="tag">C++</span>
+          <span class="tag">Arduino IDE</span>
+          <span class="tag">Microcontroladores</span>
+          <span class="tag">Sensores UV</span>
+          <span class="tag">Liderança Técnica</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-title">ECOGEST — Hackathon (2º Lugar)</span>
+          <span class="project-badge badge-done">Concluído</span>
+        </div>
+        <p class="project-desc">
+          Solução sustentável para gestão de efluentes industriais desenvolvida em hackathon. Atuei como Líder de Desenvolvimento e Product Owner — validei a arquitetura, o modelo de negócios, a jornada do usuário e conduzi o pitch final para a banca avaliadora.
+        </p>
+        <div class="tags">
+          <span class="tag">Product Owner</span>
+          <span class="tag">Arquitetura de solução</span>
+          <span class="tag">Pitch</span>
+          <span class="tag">Sustentabilidade</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+  <div class="container">
+    <div class="section-label">Habilidades</div>
+    <h2>Stack técnico</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Linguagens</div>
+        <div class="skill-list">
+          <span class="skill-pill">C</span>
+          <span class="skill-pill">C++</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Ferramentas</div>
+        <div class="skill-list">
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">GitHub</span>
+          <span class="skill-pill">Arduino IDE</span>
+          <span class="skill-pill">Notion</span>
+          <span class="skill-pill">Excel</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Competências</div>
+        <div class="skill-list">
+          <span class="skill-pill">Liderança técnica</span>
+          <span class="skill-pill">Gestão de equipes</span>
+          <span class="skill-pill">Firmware</span>
+          <span class="skill-pill">Microcontroladores</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Idiomas</div>
+        <div class="skill-list">
+          <span class="skill-pill">Português nativo</span>
+          <span class="skill-pill">Inglês intermediário</span>
+          <span class="skill-pill">Japonês avançado</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIÊNCIAS -->
+<section id="experiencias">
+  <div class="container">
+    <div class="section-label">Experiências</div>
+    <h2>Trajetória</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">Jul 2026 – atual</div>
+        <div class="timeline-body">
+          <div class="timeline-org">Semeia Code — Unicamp</div>
+          <div class="timeline-role">Monitor de Programação</div>
+          <ul class="timeline-bullets">
+            <li>Ensino de lógica de programação e Python para alunos do ensino médio de escolas públicas</li>
+            <li>Suporte presencial, esclarecimento de dúvidas e feedback individualizado nos exercícios</li>
+            <li>Validação e teste prévio de listas didáticas elaboradas pela equipe de professores</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Jan 2026 – atual</div>
+        <div class="timeline-body">
+          <div class="timeline-org">CDI — Unicamp</div>
+          <div class="timeline-role">Diretor de Marketing</div>
+          <ul class="timeline-bullets">
+            <li>Liderança de equipe de 5 pessoas em campanhas digitais com foco em conversão e engajamento</li>
+            <li>Análise de dados e otimização de estratégias de comunicação</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Ago – Dez 2025</div>
+        <div class="timeline-body">
+          <div class="timeline-org">CDI — Unicamp</div>
+          <div class="timeline-role">Analista de Projetos e Eventos</div>
+          <ul class="timeline-bullets">
+            <li>Gestão de cronograma e logística de workshops e visitas técnicas</li>
+            <li>Negociação com empresas parceiras para viabilização dos eventos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Out 2025</div>
+        <div class="timeline-body">
+          <div class="timeline-org">Semana Tecnologia em Foco</div>
+          <div class="timeline-role">Gestão Logística</div>
+          <ul class="timeline-bullets">
+            <li>Suporte operacional e gestão da sala VIP com palestrantes do setor de tecnologia</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-body">
+          <div class="timeline-org">Unicamp</div>
+          <div class="timeline-role">Participações acadêmicas</div>
+          <ul class="timeline-bullets">
+            <li>FTPA (Feira de Tecnologia e Projetos Acadêmicos da FT)</li>
+            <li>Congresso de iniciação científica e tecnológica na Unicamp</li>
+            <li>Semana de Tecnologia em Foco — evento de extensão universitária</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="container">
+    <div class="section-label">Contato</div>
+    <h2>Vamos conversar</h2>
+    <div class="contact-grid">
+
+      <a href="mailto:tnkb.oficial@gmail.com" class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        </div>
+        <div class="contact-label">E-mail</div>
+        <div class="contact-value">tnkb.oficial@gmail.com</div>
+      </a>
+
+      <a href="https://github.com/THIAGONAKABA" target="_blank" class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </div>
+        <div class="contact-label">GitHub</div>
+        <div class="contact-value">THIAGONAKABA</div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/thiagonakaba/" target="_blank" class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value">Thiago Nakaba</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Thiago Yuiti Azevedo Nakaba · Limeira, SP</p>
+</footer>
+
+</body>
+</html>
